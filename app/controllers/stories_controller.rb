@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_story, only: [:edit, :update, :show, :destory]
+  before_action :find_story, only: [:edit, :update, :destroy]
 
   def index
     @stories = current_user.stories.order(created_at: :desc)
@@ -13,18 +13,42 @@ class StoriesController < ApplicationController
   def create
     @story = current_user.stories.new(story_params)
     if @story.save
-      redirect_to stories_path, notice:'文章已新增'
+      if params[:publish_draft]
+        @story.publish!
+        redirect_to stories_path, notice:'文章已發布'
+      else
+        redirect_to edit_story_path(@story),notice:'文章已儲存'
+      end
     else
       render :new
     end
   end
+
+  def destroy
+    if @story.present?
+      @story.destroy
+      redirect_to stories_path, notice: '故事已刪除'
+    else
+      redirect_to stories_path
+    end
+  end
+  
 
   def edit
   end
 
   def update
     if @story.update(story_params)
-      redirect_to stories_path, notice: '文章更新成功'
+      case 
+      when params[:publish_draft]
+        @story.publish!
+        redirect_to stories_path, notice: '文章已發布'
+      when params[:unpublish]
+        @story.unpublish!
+        redirect_to stories_path, notice: '文章已下架'
+      else
+        redirect_to stories_path, notice: '文章更新成功'
+      end
     else
       render :edit
     end
