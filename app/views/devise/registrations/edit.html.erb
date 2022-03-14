@@ -3,9 +3,25 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <div class="field"> 
+    <%= f.label :username,'使用者帳號' %><br />
+    <%= f.text_field :username,class:'input is-primary is-medium',placeholder:'範例：@sam'%>
+  </div>
+
+  <div class="field"> 
+    <%= f.label :avatar,'上傳大頭照' %><br />
+    <%= f.file_field :avatar %>
+    <%= avatar(current_user) %>
+  </div>
+  
+  <div class="field"> 
+    <%= f.label :intro,'個人簡介' %><br />
+    <%= f.text_area :intro,rows:5,class:'textarea is-primary is-medium' %>
+  </div>
+
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'input is-primary is-medium' %>
+    <%= f.email_field :email, autocomplete: "email",class:'input is-primary is-medium' %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

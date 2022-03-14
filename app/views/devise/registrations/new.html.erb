@@ -3,6 +3,11 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <div class="field"> 
+    <%= f.label :username,'使用者帳號' %><br />
+    <%= f.text_field :username,class:'input is-primary is-medium',placeholder:'範例：@sam'%>
+  </div>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'input is-primary is-medium' %>
@@ -22,7 +27,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up",class:'button is-light is-medium' %>
+    <%= f.submit "註冊",class:'button is-primary is-medium' %>
   </div>
 <% end %>
 <hr>

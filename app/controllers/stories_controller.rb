@@ -57,7 +57,7 @@ class StoriesController < ApplicationController
 
   private
   def find_story
-    @story = current_user.stories.find(params[:id])
+    @story = current_user.stories.friendly.find(params[:id])
   end
   
 
