@@ -1,4 +1,7 @@
 class Story < ApplicationRecord
+
+  acts_as_paranoid
+
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
 
@@ -13,13 +16,10 @@ class Story < ApplicationRecord
 
   
   # scopes
-  default_scope {where(deleted_at: nil)}
+  
   scope :published_stories, ->{published.with_attached_cover_image.order(created_at: :desc).includes(:user)  }
-  # Ex:- scope :active, -> {where(:active => true)}
+  
   # instance methods
-  def destroy
-    update(deleted_at: Time.now )
-  end
 
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
