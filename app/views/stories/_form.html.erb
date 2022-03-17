@@ -7,6 +7,9 @@
 <%= form_for(story) do |f|%>
   <%= f.label :title,'標題' %>
   <%= f.text_field :title,class:'input is-primary is-medium' %>
+  <%= cover_image(story,size: [500,500]) %>
+  <%= f.label :title,'封面照' %>
+  <%= f.file_field :cover_image %><br>
 
   <%= f.label :content,'文章內容' %>
   <%= f.text_area :content,rows: 10, class:'textarea is-primary is-medium' %>
