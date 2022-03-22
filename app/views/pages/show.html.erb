@@ -1,11 +1,9 @@
-
-
 <section class="columns has-text-centered story-content">
   <section class="column is-offset-3 is-6">
     <h1 class="title"> <%= @story.title%> </h1>
 
     <span class="profile" data-controller='followuser'>
-      <%= avatar(current_user,size:[50,50])%>
+      <%= avatar(@story.user,size:[50,50])%>
       <span class="username"> <%= @story.user.username %> </span>
       <%= link_to '#',class: 'follow-button',
                                data: {action: 'followuser#follow', 
