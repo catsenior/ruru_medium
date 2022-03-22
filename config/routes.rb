@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
+
+  resources :users,only:[] do
+    member do
+      post :follow
+    end
+  end
+
   resources :stories do
     member do
       post :clap

@@ -4,10 +4,16 @@
   <section class="column is-offset-3 is-6">
     <h1 class="title"> <%= @story.title%> </h1>
 
-    <span class="profile">
+    <span class="profile" data-controller='followuser'>
       <%= avatar(current_user,size:[50,50])%>
       <span class="username"> <%= @story.user.username %> </span>
-      <a href="#" class="follow-button">Follow</a>
+      <%= link_to '#',class: 'follow-button',
+                               data: {action: 'followuser#follow', 
+                                      user: @story.user.id, 
+                                      target: 'followuser.followButton'
+                                     } do %>
+        <%= (user_signed_in? && current_user.follow?(@story.user)) ? 'Followed' : 'Follow' %>
+      <% end %>
     </span>
 
     <article class="content">
