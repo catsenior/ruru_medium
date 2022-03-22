@@ -12,6 +12,14 @@
                                      } do %>
         <%= (user_signed_in? && current_user.follow?(@story.user)) ? 'Followed' : 'Follow' %>
       <% end %>
+      
+      <%= link_to '#',class: 'bookmark-button',data: { action: 'followuser#bookmark',slug: @story.slug} do %>
+        <% if user_signed_in? && current_user.bookmark?(@story) %>
+          <i class="fa-solid fa-bookmark" data-target = "followuser.bookmark"></i>
+        <% else %>
+          <i class = "fa-regular fa-bookmark" data-target = "followuser.bookmark"></i>
+        <% end %>
+      <% end %>
     </span>
 
     <article class="content">
