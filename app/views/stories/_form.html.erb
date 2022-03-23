@@ -4,7 +4,7 @@
   </div>
 <% end %>
 
-<%= form_for(story) do |f|%>
+<%= form_for(story, html:{class:'story-editor'}) do |f|%>
   <%= f.label :title,'標題' %>
   <%= f.text_field :title,class:'input is-primary is-medium' %>
   <%= cover_image(story,size: [500,500]) %>
@@ -14,7 +14,13 @@
   <%= f.label :content,'文章內容' %>
   <%= f.text_area :content,rows: 10, class:'textarea is-primary is-medium' %>
   <hr>
+  <% if story.published? %>
+  <%= f.submit '更新文章',name:'save_as_draft',class:'button is-dark is-medium'%>
+  <% else %>
   <%= f.submit '儲存草稿',name:'save_as_draft',class:'button is-dark is-medium'%>
+  <% end %>
+  
   <%= f.submit '發布文章',name:'publish_draft',class:'button is-primary is-medium' if story.may_publish? %>
   <%= f.submit '文章下架',name:'unpublish',class:'button is-danger is-medium' if story.may_unpublish? %>
 <% end %>
+<%= javascript_pack_tag 'editor'%>

@@ -7,7 +7,7 @@
     </h2>
     
     <p>
-      <%= story.content %> <br>
+      <%= strip_tags(story.content).truncate(200) %> <br>
       最後編輯時間：<%= time_ago_in_words(story.updated_at) %>
       <%= link_to '編輯', edit_story_path(story), class:'button is-text is-small'%>
       <%= link_to '刪除', story, method:'delete',data:{confirm:'確認刪除文章？'},class:'button is-text is-small'%>

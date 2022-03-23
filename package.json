@@ -9,6 +9,7 @@
     "@rails/webpacker": "5.4.3",
     "axios": "^0.26.1",
     "bulma": "^0.9.3",
+    "froala-editor": "^4.0.10",
     "stimulus": "^3.0.1",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",

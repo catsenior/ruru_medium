@@ -24,7 +24,7 @@
 
     <article class="content">
       <%= cover_image(@story,size: [1000,500]) %>
-      <%= simple_format(@story.content) %>
+      <%= @story.content.html_safe %>
 
       <footer data-controller="story">
         <%= link_to "#", class: 'clapButton is-size-5 has-text-primary',data:{action:'story#addClap',slug: @story.slug} do%>
