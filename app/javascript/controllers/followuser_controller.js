@@ -36,6 +36,9 @@ export default class extends Controller {
     axios.post(`/api/stories/${slug}/bookmark`)
       .then(function (response) {
         switch (response.data.status) {
+          case 'sign_in_first':
+            alert('你必須先登入')
+            break;
           case 'Bookmark':
             icon.classList.add('fa-solid')
             icon.classList.remove('fa-regular')

@@ -5,7 +5,7 @@ class Api::UsersController < Api::BaseController
     render json:{status: current_user.follow!(@user)}
   end
 
-  
+
 
   private
 
