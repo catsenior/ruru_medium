@@ -3,6 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  enum role:{
+    user: 0,
+    vip_user: 1,
+    platinum_user: 2,
+    admin: 3
+  }
+
   #validation
   validates :username,presence: true, uniqueness: true
 
@@ -13,6 +21,11 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   #instance method
+  def paid_user?
+    vip_user? or platinum_user?    
+  end
+  
+
   def follow?(user)
     follows.exists?(following: user)
   end

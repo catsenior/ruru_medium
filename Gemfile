@@ -14,6 +14,10 @@ gem 'aasm', '~> 5.2'
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'babosa', '~> 2.0'
 gem 'paranoia', '~> 2.5', '>= 2.5.2'
+gem 'figaro', '~> 1.2'
+gem "braintree", "~> 4.6.0"
+
+
 
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
