@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '2.6.10'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
@@ -9,15 +9,13 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
 
 # Use Puma as the app server
 
-gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'aasm', '~> 5.2'
-gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'babosa', '~> 2.0'
-gem 'paranoia', '~> 2.5', '>= 2.5.2'
+gem 'braintree', '~> 4.6.0'
+gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'figaro', '~> 1.2'
-gem "braintree", "~> 4.6.0"
-
-
+gem 'friendly_id', '~> 5.4', '>= 5.4.2'
+gem 'paranoia', '~> 2.5', '>= 2.5.2'
 
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -40,15 +38,11 @@ gem 'image_processing', '~> 1.12', '>= 1.12.2'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
-group :production do
-  gem 'pg', '~> 1.3', '>= 1.3.5'
-end
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'sqlite3'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'hirb-unicode', '~> 0.0.5'
+  gem 'sqlite3'
 end
 
 group :development do
@@ -56,11 +50,11 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
+  gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
   gem 'foreman', '~> 0.87.2'
+  gem 'spring'
 end
 
 group :test do
@@ -72,4 +66,8 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+group :production do
+  gem 'pg', '~> 1.4', '>= 1.4.1'
+end
