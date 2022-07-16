@@ -44,6 +44,9 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'hirb-unicode', '~> 0.0.5'
   gem 'sqlite3'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rvm'
 end
 
 group :development do
