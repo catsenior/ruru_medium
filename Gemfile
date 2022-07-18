@@ -46,6 +46,8 @@ group :development, :test do
   gem 'sqlite3'
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
+  gem 'capistrano', '~> 3.11'
+  gem 'capistrano-rvm'
 end
 
 group :development do
