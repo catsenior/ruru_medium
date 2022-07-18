@@ -46,7 +46,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
-  
 end
 
 group :development do
