@@ -17,7 +17,7 @@ gem 'figaro', '~> 1.2'
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'paranoia', '~> 2.5', '>= 2.5.2'
 
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
